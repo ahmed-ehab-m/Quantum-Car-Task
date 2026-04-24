@@ -5,41 +5,45 @@ config:
   theme: forest
 ---
 classDiagram
+direction TB
     class Car {
-        - Engine engine
-        - double speed
-        - boolean isRunning
-        + String start()
-        + String stop()
-        + String accelerate()
-        + String break()
-
+	    - Engine engine
+	    - double speed
+	    - boolean isRunning
+	    + void start()
+	    + void stop()
+	    + void accelerate()
+	    + void break()
     }
 
     class Engine {
-        # boolean isRunning
-        # double speed
-        + String increase()
-        + String decrease()
+	    # boolean isRunning
+	    # double speed
+	    + String increase()
+	    + String decrease()
     }
+
     class ElectricEngine {
     }
+
     class GasEngine {
-    }
-    class HybridEngine {
-        - ElectricEngine electricEngine
-        - GasEngine gasEngine
-        - Engine determineEngineType(carSpeed)
     }
 
     class CarFactory {
-        - Car car
-        - Engine engine
-        + Car createCar(engine)
-        + Car replaceEngine(engine,car)
+	    - Car car
+	    - Engine engine
+	    + Car createCar(engine)
+	    + Car replaceEngine(engine,car)
     }
 
-    
+    class HybridEngine {
+	 
+        - ElectricEngine electricEngine
+	    - GasEngine gasEngine
+        - Engine activeEngine
+	    - Engine determineEngineType(carSpeed)
+        - void convertEngineType()
+    }
 
     Car *-- Engine : "Composition (HAS-A)"
     CarFactory *-- Car : "Composition (HAS-A)"
