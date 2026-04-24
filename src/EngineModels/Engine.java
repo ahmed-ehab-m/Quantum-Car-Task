@@ -1,17 +1,21 @@
+package EngineModels;
+
 /// abstract because it is only blueprint class
 public abstract class Engine {
 
-    private boolean isRunning; /// status of engine
-    private double speed;
+    private final boolean isRunning=false; /// status of engine
+    private double speed=0;
 
     /// engine speed control methods
-    public void increase()
+    public void increase(double carSpeed)
     {
         ++speed;
     }
-    public void decrease()
+    public void decrease(double carSpeed)
     {
-        --speed;
+        /// to avoid negative values
+        if (speed-1 > 0)
+            --speed;
     }
 
     /// getters , setters
@@ -19,9 +23,7 @@ public abstract class Engine {
         return isRunning;
     }
 
-    public void setRunning(boolean running) {
-        isRunning = running;
-    }
+    public abstract void setRunning(boolean running);
 
     public double getSpeed() {
         return speed;
