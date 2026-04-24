@@ -1,4 +1,5 @@
 ### System Architecture Diagram
+```mermaid
 ---
 config:
   theme: forest
@@ -37,6 +38,7 @@ classDiagram
         + Car createCar(engine)
         + Car replaceEngine(engine,car)
     }
+
     
 
     Car *-- Engine : "Composition (HAS-A)"
@@ -47,3 +49,4 @@ classDiagram
     GasEngine <|-- Engine : "Inheritance (IS-A)"
     ElectricEngine <|-- Engine : "Inheritance (IS-A)"
     HybridEngine <|-- Engine : "Inheritance (IS-A)"
+```
